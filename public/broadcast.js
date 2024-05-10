@@ -66,7 +66,6 @@ window.addEventListener("beforeunload", () => {
 });
 
 
-const videoElement = document.querySelector("video");
 const audioSelect = document.querySelector("select#audioSource");
 const videoSelect = document.querySelector("select#videoSource");
 

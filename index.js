@@ -17,7 +17,7 @@ io.sockets.on("error",e => console.log(e))
 io.sockets.on("connection",socket => {
     socket.on("broadcaster",() => {
         broadcaster = socket.id;
-        socket.broadcast.emit("broadcaster")
+        io.emit("broadcaster")
     });
     socket.on("watcher",() => {
         io.to(broadcaster).emit("watcher",socket.id)
