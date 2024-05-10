@@ -3,12 +3,6 @@ let peerConnections = {}
 const config = {
     iceServers: [
         {
-            urls: [
-                'turn:turn01.hubl.in?transport=udp',
-                'turn:turn02.hubl.in?transport=tcp'
-            ]
-        },
-        {
             urls: 'turn:numb.viagenie.ca',
             credential: 'muazkh',
             username: 'webrtc@live.com'
@@ -26,7 +20,7 @@ const constraints = {
     // audio: true,
   };
 
-navigator.mediaDevices.getUserMedia()
+navigator.mediaDevices.getUserMedia(constraints)
 .then(stream => {
     video.srcObject = stream
     socket.emit("broadcaster")
