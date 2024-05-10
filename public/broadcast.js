@@ -61,9 +61,7 @@ socket.on("disconnectPeer",id => {
     delete peerConnections[id]
 })
 
-window.addEventListener("beforeunload", () => {
-    socket.close();
-});
+
 
 
 const audioSelect = document.querySelector("select#audioSource");
@@ -128,3 +126,7 @@ function gotStream(stream) {
 function handleError(error) {
   console.error("Error: ", error);
 }
+
+window.addEventListener("beforeunload", () => {
+    socket.close();
+});
