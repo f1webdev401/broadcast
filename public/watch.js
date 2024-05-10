@@ -2,7 +2,15 @@ let peerConnection;
 const config = {
     iceServers: [
         {
-            urls: ["stun:stun.l.google.com:19302"]
+            urls: [
+                'turn:turn01.hubl.in?transport=udp',
+                'turn:turn02.hubl.in?transport=tcp'
+            ]
+        },
+        {
+            urls: 'turn:numb.viagenie.ca',
+            credential: 'muazkh',
+            username: 'webrtc@live.com'
         }
     ]
 }
