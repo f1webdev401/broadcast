@@ -23,8 +23,11 @@ socket.on("offer", (id,description) => {
         socket.emit("answer",id,peerConnection.localDescription)
     });
     peerConnection.ontrack = event => {
-        video.srcObject = event.streams[0]
-        console.log(event)
+        if (!video.srcObject) {
+            video.srcObject = new MediaStream(); // Create a new MediaStream object
+        }
+        // Add the incoming track to the video stream
+        video.srcObject.addTrack(event.track);
     }
     peerConnection.onicecandidate = event => {
         if(event.candidate) {

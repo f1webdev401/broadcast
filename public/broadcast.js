@@ -23,6 +23,7 @@ const constraints = {
 navigator.mediaDevices.getUserMedia(constraints)
 .then(stream => {
     video.srcObject = stream
+    console.log(stream)
     socket.emit("broadcaster")
 })
 .catch(error => {

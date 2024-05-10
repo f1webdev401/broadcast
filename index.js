@@ -23,7 +23,7 @@ io.sockets.on("connection",socket => {
         io.to(broadcaster).emit("watcher",socket.id)
     });
     socket.on("disconnect",() => {
-        io.to("broadcaster").emit("disconnectPeer",socket.id)
+        io.to(broadcaster).emit("disconnectPeer",socket.id)
     });
     socket.on("offer",(id,message) => {
         io.to(id).emit("offer",socket.id,message)
