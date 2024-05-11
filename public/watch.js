@@ -18,10 +18,12 @@ socket.on("offer", (id,description) => {
     peerConnection
     .setRemoteDescription(description)
     .then(() => peerConnection.createAnswer())
-    .then(sdp => peerConnection.setLocalDescription(sdp))
-    .then(() => {
-        socket.emit("answer",id,peerConnection.localDescription)
-    });
+    .then(sdp => {
+        peerConnection.setLocalDescription(sdp)
+        socket.emit("answer",id,sdp)
+    }
+    )
+   
     peerConnection.ontrack = event => {
         video.srcObject = event.streams[0]
         console.log(event.streams[0])
